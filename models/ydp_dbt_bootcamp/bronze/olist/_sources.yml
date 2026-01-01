@@ -1,7 +1,7 @@
 sources:
   - name: olist
-    database: snowflake_dbt
-    schema: etl_pipeline
+    database: SNOWFLAKE_DBT
+    schema: ETL_PIPELINE
     tables:
       - name: olist_customers
       - name: olist_orders
