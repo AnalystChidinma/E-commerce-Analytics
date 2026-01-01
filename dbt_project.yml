@@ -32,7 +32,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   ydp_dbt_bootcamp:
     # Config indicated by + and applies to all files under models/example/
-    example:
     bronze:
       +materialized: view
     sliver:
