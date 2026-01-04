@@ -3,7 +3,7 @@ with source as (
     from {{source ('olist', 'olist_orders')}}
 ),
 
-cleaned_olist_orders as(
+olist_orders_renamed as(
 
     select 
         order_id,
@@ -18,6 +18,6 @@ cleaned_olist_orders as(
     where order_id is not null
 )
 
-select * from cleaned_olist_orders
+select * from olist_orders_renamed
 
 

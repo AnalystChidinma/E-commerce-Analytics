@@ -1,11 +1,29 @@
 version: 2
 
 models:
-  - name: int_olist__order_payments
-    description: "Aggregated payment metrics per order"
+  - name: int_olist_order_payments_agg
+    description: >
+      Aggregated payments at order level.
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
 
-  - name: int_olist__orders_items
-    description: "Order-level item and freight metrics"
+  - name: int_olist_order_items_agg
+    description: >
+      Aggregated order items at order level.
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
 
-  - name: int_olist__orders
-    description: "Customer purchasing behavior aggregated from orders"
+  - name: int_olist_orders_enriched
+    description: >
+      Orders enriched with customer attributes.
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique

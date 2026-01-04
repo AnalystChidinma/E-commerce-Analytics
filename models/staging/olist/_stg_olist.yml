@@ -2,20 +2,24 @@ version: 2
 
 models:
   - name: stg_olist__customers
-    description: Cleaned customer data. One row per customer.
+    description: >
+      Cleaned customer data. One row per customer.
     columns:
       - name: customer_id
-        description: Primary key of the customer
+        description: >
+          Primary key of the customer
         tests:
           - not_null
           - unique
       - name: customer_unique_id
-        description: "Unique identifier across multiple orders"
+        description: >
+          Unique identifier across multiple orders
         tests:
           - not_null
 
       - name: customer_state
-        description: Two-letter Brazilian state code
+        description: >
+          Two-letter Brazilian state code
         tests:
           - not_null
 
@@ -23,12 +27,9 @@ models:
         tests:
           - not_null
 
-      - name: customer_zip_code_prefix
-        tests:
-          - not_null
-
   - name: stg_olist__orders
-    description: Cleaned order-level data. One row per order.
+    description: >
+      Cleaned order-level data. One row per order.
 
     columns:
       - name: order_id
@@ -60,27 +61,32 @@ models:
           - not_null
 
       - name: order_approved_at
-        description: "Timestamp when the order payment was approved."
+        description: >
+          Timestamp when the order payment was approved.
         tests:
           - not_null
           
       - name: order_delivered_to_carrier_at
-        description: "Timestamp when the order was handed to the carrier."
+        description: >
+          Timestamp when the order was handed to the carrier.
         tests:
           - not_null
 
       - name: order_delivered_to_customer_at
-        description: "Timestamp when the order reached the customer."
+        description: >
+          Timestamp when the order reached the customer.
         tests:
           - not_null
 
       - name: order_estimated_delivery_date
-        description: "Estimated delivery date at the time of purchase."
+        description: >
+           Estimated delivery date at the time of purchase.
         tests:
           - not_null
           
   - name: stg_olist__order_items
-    description: Order line items. One row per product per order.
+    description: >
+      Order line items. One row per product per order.
     columns:
       - name: order_id
         tests:
@@ -91,7 +97,8 @@ models:
           - not_null
 
       - name: order_item_id
-        description: Line number within the order
+        description: >
+          Line number within the order
         tests:
           - not_null
 
@@ -100,7 +107,8 @@ models:
           - not_null
 
   - name: stg_olist__order_payments
-    description: Payment records per order.
+    description: >
+     Payment records per order.
     columns:
       - name: order_id
         tests:

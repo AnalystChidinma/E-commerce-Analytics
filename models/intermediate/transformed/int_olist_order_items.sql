@@ -1,9 +1,5 @@
 with order_items as (
-            select 
-                order_id,
-                order_item_id,
-                item_price,
-                shipping_price
+            select * 
             from {{ref('stg_olist_order_items')}}
 ),
 

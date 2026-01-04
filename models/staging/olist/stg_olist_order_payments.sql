@@ -5,7 +5,7 @@ with source as (
 
 ),
 
-cleaned_olist_order_payments as (
+olist_order_payments_renamed as (
     select
         order_id,
         payment_sequential,
@@ -17,4 +17,4 @@ cleaned_olist_order_payments as (
 )
 
 select * 
-    from cleaned_olist_order_payments
+    from olist_order_payments_renamed

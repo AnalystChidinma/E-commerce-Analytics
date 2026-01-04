@@ -5,12 +5,11 @@ with source as (
 
 ),
 
-renamed_olist_customers as (
+olist_customers_trimmed as (
 
     select
         customer_id,
         customer_unique_id,
-        customer_zip_code_prefix as zip_code_prefix,
         customer_city,
         customer_state
     from source
@@ -19,4 +18,4 @@ renamed_olist_customers as (
 )
 
 select *
-from renamed_olist_customers
+from olist_customers_trimmed
