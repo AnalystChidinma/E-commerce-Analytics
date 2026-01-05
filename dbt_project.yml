@@ -36,4 +36,5 @@ models:
     intermediate:
       +materialized: view
     mart:
+      +enabled: true
       +materialized: table
