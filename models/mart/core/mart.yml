@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: fct_olist_orders
+    description: > 
+      Final fact table at order grain for Olist analytics
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+
+      - name: order_status
+        tests:
+          - accepted_values:
+              values:
+                - delivered
+                - shipped
+                - canceled
+                - invoiced
+                - processing
+                - unavailable
+
+  - name: dim_customers
+    description: > 
+      Customer dimension table"
+    columns:
+      - name: customer_unique_id
+        tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        tests:
+          - not_null
+
+      - name: customer_city
+        tests:
+          - not_null
+
+      - name: customer_state
+        tests:
+          - not_null
+
+  - name: dim_payments
+    description: >
+       Customer payment table
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+          
+      - name: payment_type
+        tests:
+          - not_null
+       
+      - name: payment_installments
+        tests:
+          - not_null
+
+  - name: dim_date
+    description: >
+       Ttransaction date table
+    columns:
+      - name: order_date
+        tests:
+          - not_null
+          - unique
+          
+      - name: year
+        tests:
+          - not_null
+       
+      - name: month
+        tests:
+          - not_null
+
+      - name: day_of_year
+        tests:
+          - not_null
+
+      
+          
+          
+        
+       
+        
