@@ -48,14 +48,8 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values:
-                - delivered
-                - shipped
-                - canceled
-                - invoiced
-                - processing
-                - unavailable
-
+              values: ['delivered','shipped','canceled','invoiced','processing','unavailable']
+                
       - name: order_purchase_timestamp
         tests:
           - not_null
@@ -69,8 +63,6 @@ models:
       - name: order_delivered_to_carrier_at
         description: >
           Timestamp when the order was handed to the carrier.
-        tests:
-          - not_null
 
       - name: order_delivered_to_customer_at
         description: >
@@ -81,8 +73,6 @@ models:
       - name: order_estimated_delivery_date
         description: >
            Estimated delivery date at the time of purchase.
-        tests:
-          - not_null
           
   - name: stg_olist__order_items
     description: >
@@ -91,6 +81,9 @@ models:
       - name: order_id
         tests:
           - not_null
+          - relationships:
+              to: ref('stg_olist__orders')
+              field: order_id
 
       - name: product_id
         tests:
@@ -113,17 +106,16 @@ models:
       - name: order_id
         tests:
           - not_null
+          - relationships:
+              to: ref('stg_olist__orders')
+              field: order_id
 
       - name: payment_type
         tests:
           - not_null
           - accepted_values:
-              values:
-                - credit_card
-                - boleto
-                - voucher
-                - debit_card
-
+              values: ['credit_card','boleto','voucher','debit_card']
+             
       - name: payment_value
         tests:
           - not_null

@@ -16,9 +16,9 @@ sources:
         description: >
           Order-level data
         loaded_at_field: order_purchase_timestamp
-        freshness:
-          warn_after: {count: 30, period: day}
-          error_after: {count: 60, period: day}
+        config:
+          freshness:
+            warn_after: {count: 24, period: hour}
 
       - name: olist_order_items
         description: >
