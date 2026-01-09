@@ -1,15 +1,24 @@
 with order_items as (
-            select * 
-            from {{ref('stg_olist_order_items')}}
+
+    select
+        order_id,
+        item_price,
+        shipping_price
+    from {{ ref('stg_olist_order_items') }}
+
 ),
 
-aggregated_order_items as(
-            select 
-                order_id,
-                count(*) as total_items,
-                sum(item_price) as total_item_price,
-                sum(shipping_price) as total_shipping_price
-            from order_items
-            group by order_id
+order_items_agg as (
+
+    select
+        order_id,
+        sum(item_price) as item_revenue,
+        sum(shipping_price) as shipping_revenue,
+        sum(item_price + shipping_price) as total_order_revenue
+    from order_items
+    group by order_id
+
 )
-select * from aggregated_order_items
+
+select *
+from order_items_agg

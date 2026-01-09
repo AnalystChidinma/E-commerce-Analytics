@@ -1,15 +1,29 @@
-with payments as (
-    select *
-    from {{ref('olist_order_payments')}}
-),
-aggregated_order_payments as (
+with order_payments as (
+
     select
         order_id,
-        payment_type,
-        count(*) as total_payment,
-        max(payment_installments) as payment_installments,
-        sum(payment_value) as total_payment_value
-    from payments
-    group by order_id, payment_type
+        payment_amount
+    from {{ ref('stg_olist_order_payments') }}
+
+),
+
+order_payments_agg as (
+
+    select
+        order_id,
+        sum(payment_amount) as total_payment_amount,
+        count(*) as payment_count
+    from order_payments
+    group by order_id
+
 )
-select * from aggregated_order_payments
+
+select
+    order_id,
+    total_payment_amount,
+    payment_count,
+    case
+        when payment_count > 1 then true
+        else false
+    end as payment_flag
+from order_payments_agg
