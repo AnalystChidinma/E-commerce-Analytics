@@ -125,7 +125,7 @@ Using the mart models fact_orders, dim_customers, dim_delivery, analysts can ans
  - How long do deliveries take, and how often are orders delivered late?
 
  - How do delivery delays impact order completion status?
- - 
+   
 These questions are answered downstream through BI tools or ad-hoc SQL, leveraging the curated tables produced by this project.
 
 ### Packages
